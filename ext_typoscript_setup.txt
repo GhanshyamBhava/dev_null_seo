@@ -1,0 +1,154 @@
+config.devnullseo {
+	sitemap {
+		include = pages
+		pages {
+			include = {$config.devnullseo.sitemap.pages.include}
+		}
+	}
+	rendererSitemap {
+		pages  = dev_null_seo:renderer/class.tx_devnullseo_render_pages.php:tx_devnullseo_render_pages
+	}
+	rendererPages {
+		images = dev_null_seo:renderer/class.tx_devnullseo_render_images.php:tx_devnullseo_render_images
+		dam_ttcontent = dev_null_seo:renderer/class.tx_devnullseo_render_dam_ttcontent.php:tx_devnullseo_render_dam_ttcontent
+		flvplayer = dev_null_seo:renderer/class.tx_devnullseo_render_flvplayer.php:tx_devnullseo_render_flvplayer
+		pwhighslide = dev_null_seo:renderer/class.tx_devnullseo_render_pwhighslide.php:tx_devnullseo_render_pwhighslide
+	}
+	DEBUGxmlWraps {
+		urlset {
+			outerWrap = <ul class="urlset">|</ul>
+		}
+		url {
+			outerWrap = <ul class="url">|</ul>
+		}
+		loc {
+			outerWrap = <li class="loc">|</li>	
+		}
+		lastmod {
+			outerWrap = <li class="lastmod">|</li>	
+		}
+		pageItems {
+			outerWrap = |	
+		}
+		comment {
+			noTrimWrap = |<!-- | -->|	
+		}
+		image {
+			outerWrap = <ul class="image">|</ul>
+		}
+		imageLoc {
+			outerWrap = <li class="imageLoc">|</li>
+		}
+		imageCaption {
+			outerWrap = <li class="imageCaption">|</li>
+		}
+		imageGeoLoc {
+			outerWrap = <li class="imageGeoLoc">|</li>
+		}
+		imageTitle {
+			outerWrap = <li class="imageTitle">|</li>
+		}
+		imageLicense {
+			outerWrap = <li class="imageLicense">|</li>
+		}
+		video {
+			outerWrap = <ul class="video">|</ul>
+		}
+		videoLoc {
+			outerWrap = <li class="video_loc">|</li>
+		}
+		videoThumb {
+			outerWrap = <li class="thumbnail_loc">|</li>
+		}
+		videoTitel {
+			outerWrap = <li class="video_title">|</li>
+		}
+		videoDescr {
+			outerWrap = <li class="video_description">|</li>
+		}
+	}
+	xmlWraps {
+		urlset {
+			outerWrap (
+				<?xml version='1.0' encoding='UTF-8'?>
+				<urlset
+				    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                                        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+                                        http://www.w3.org/TR/xhtml11/xhtml11_schema.html
+                                        http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"
+				    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+				    xmlns:xhtml="http://www.w3.org/TR/xhtml11/xhtml11_schema.html"
+				    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+                    xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" >
+				   |
+				</urlset>
+			)
+		}
+		url {
+			outerWrap = <url>|</url>	
+		}
+		loc {
+			outerWrap = <loc>|</loc>	
+		}
+		lastmod {
+			outerWrap = <lastmod>|</lastmod>	
+		}
+		pageItems {
+			outerWrap = |	
+		}
+		comment {
+			noTrimWrap = |<!-- | -->|	
+		}
+		image {
+			outerWrap = <image:image>|</image:image>
+		}
+		imageLoc {
+			outerWrap = <image:loc>|</image:loc>
+		}
+		imageCaption {
+			outerWrap = <image:caption>|</image:caption>
+		}
+		imageGeoLoc {
+			outerWrap = <image:geo_location>|</image:geo_location>
+		}
+		imageTitle {
+			outerWrap = <image:title>|</image:title>
+		}
+		imageLicense {
+			outerWrap = <image:license>|</image:license>
+		}
+		video {
+			outerWrap = <video:video>|</video:video>
+		}
+		videoLoc {
+			outerWrap = <video:content_loc>|</video:content_loc>
+		}
+		videoThumb {
+			outerWrap = <video:thumbnail_loc>|</video:thumbnail_loc>
+		}
+		videoTitel {
+			outerWrap = <video:title>|</video:title>
+		}
+		videoDescr {
+			outerWrap = <video:description>|</video:description>
+		}
+    }
+}
+
+# Include sitemap.xml
+includeLibs.tx_devnullseo_sitemap = EXT:dev_null_seo/class.tx_devnullseo_sitemap.php
+tx_devnullseo_sitemap = PAGE
+tx_devnullseo_sitemap {
+	typeNum                     = {$config.devnullseo.typeNum}
+	config.disableAllHeaderCode = 1
+	config.renderCharset        = UTF-8
+	config.additionalHeaders    = Content-type: text/xml
+	config.admPanel = 0
+    10 = USER
+	10 {
+		userFunc = tx_devnullseo_sitemap->main
+		inludeRootShortcut = 0
+	}
+
+}

@@ -1,0 +1,11 @@
+config.devnullseo.sitemap.pages {
+	# cat=dev-null-seo/enable/1; type=string; label=renders to include for pagecontent
+	include =
+}
+
+config.devnullseo {
+	# cat=dev-null-seo/base/1; type=string; label=page.typeNum for the xml-sitemap
+	typeNum = 1963
+}
+
+
